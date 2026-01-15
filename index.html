@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<title>Jharkhand Scholarship Chatbot</title>
+
+<style>
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.header img {
+  height: 100px;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  max-width: 520px;
+  margin: auto;
+  padding: 20px;
+}
+
+.chatbox {
+  border: 1px solid #ccc;
+  padding: 10px;
+  height: 360px;
+  overflow-y: auto;
+  margin-bottom: 10px;
+  background: #f9f9f9;
+}
+
+.user {
+  color: #1a237e;
+  margin: 6px 0;
+}
+
+.bot {
+  color: #2e7d32;
+  margin: 6px 0;
+}
+
+input {
+  width: 72%;
+  padding: 10px;
+}
+
+button {
+  padding: 10px;
+  background-color: #2e7d32;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<div class="header">
+	<img src="jharkhand_logo.png" alt="Jharkhand Government Logo">
+	<h2> Pre Matric Scholarship Chatbot (e-Kalyan)</h2>
+	<img src="piramal_logo.png" alt="Piramal Foundation Logo">
+</div>
+
+<body>
+
+
+<div class="chatbox" id="chatbox">
+  <div class="bot">
+    Namaste! 
+	Main e-Kalyan Pre-Matric Scholarship se related sawalon mein madad karta hoon.<br>
+    	Aap INO login, Student transfer, class edit, IFSC, verification se jude sawal pooch sakte hain.
+  </div>
+</div>
+
+<input type="text" id="userInput" placeholder="Apna sawal likhein...">
+<button onclick="sendMessage()">Send</button>
+
+<script>
+function sendMessage() {
+  const input = document.getElementById("userInput");
+  const text = input.value.trim();
+  if (!text) return;
+
+  const chatbox = document.getElementById("chatbox");
+  chatbox.innerHTML += `<div class="user">You: ${text}</div>`;
+
+  const reply = getBotReply(text.toLowerCase());
+
+  chatbox.innerHTML += `<div class="bot">Bot: ${reply}</div>`;
+  input.value = "";
+  chatbox.scrollTop = chatbox.scrollHeight;
+}
+
+function getBotReply(text) {
+
+  /* ===============================
+     GENERAL e-KALYAN / INO QUESTIONS
+     (Derived from PPT)
+     =============================== */
+
+  // INO LOGIN & PASSWORD
+  if (
+    text.includes("login") ||
+    text.includes("ino") ||
+    text.includes("password")
+  ) {
+    return "INO login ke liye e-Kalyan portal → General Services → INO Login par jaakar User Type: School select karein. Password bhoolne par Password Reset option ka use karein.";
+  }
+
+  // GENERAL SERVICES
+  if (
+    text.includes("general") ||
+    text.includes("services") ||
+    text.includes("menu")
+  ) {
+    return "General Services ka use student transfer, edit registration (class/category), delete student aur IFSC correction jaise kaamon ke liye hota hai.";
+  }
+
+  // STUDENT TRANSFER
+  if (text.includes("transfer")) {
+    return "Student transfer ke liye General Services → Transfer Accept/Reject par jaakar Aadhaar aur Academic Year ke base par admission approve ya reject kiya jata hai.";
+  }
+
+  // CLASS / CATEGORY EDIT
+  if (
+    text.includes("class") ||
+    text.includes("category") ||
+    text.includes("edit")
+  ) {
+    return "Agar INO verification se pehle galat class ya category bhari gayi hai to General Services → Edit Pre-Matric Registration se sahi class/category update kar sakte hain. Final approval ke baad correction mushkil hota hai.";
+  }
+
+  // IFSC / BANK DETAILS
+  if (
+    text.includes("ifsc") ||
+    text.includes("bank") ||
+    text.includes("account")
+  ) {
+    return "Bank ya IFSC details galat hone par IFSC Code Correction Workflow follow karke sahi details update karni hoti hai. Galat bank details se payment fail ho sakta hai.";
+  }
+
+  // DELETE STUDENT
+  if (
+    text.includes("delete") ||
+    text.includes("duplicate") ||
+    text.includes("remove")
+  ) {
+    return "Duplicate ya galat student record ko General Services → Delete Student option se hataya ja sakta hai. Final approval ke baad delete karna avoid karein.";
+  }
+
+  // VERIFICATION PROCESS
+  if (
+    text.includes("verify") ||
+    text.includes("verification") ||
+    text.includes("approve")
+  ) {
+    return "INO verification se pehle Aadhaar, Bank, IFSC, Class aur Category ko dhyan se cross-check karein. Jaldbaazi mein verify na karein kyunki final approval ke baad correction mushkil hota hai.";
+  }
+
+  // ELIGIBILITY
+  if (
+    text.includes("eligible") ||
+    text.includes("eligibility") ||
+    text.includes("kaun")
+  ) {
+    return "SC, ST aur OBC category ke students class 1 se 10 tak Pre-Matric scholarship ke liye eligible hote hain.";
+  }
+
+  // DOCUMENTS
+  if (
+    text.includes("document") ||
+    text.includes("paper") ||
+    text.includes("certificate")
+  ) {
+    return "Scholarship ke liye Aadhaar card, caste certificate, income certificate aur bank passbook required hote hain.";
+  }
+
+  // LAST DATE
+  if (
+    text.includes("last date") ||
+    text.includes("kab tak") ||
+    text.includes("deadline")
+  ) {
+    return "Pre-Matric scholarship ke liye schools ko aam taur par 31 March tak applications complete karni hoti hain.";
+  }
+
+  // STATUS CHECK
+  if (text.includes("status")) {
+    return "Scholarship application ka status e-Kalyan portal par login karke check kiya ja sakta hai.";
+  }
+
+  /* ===============================
+     FALLBACK
+     =============================== */
+  return "Kripya e-Kalyan Pre-Matric Scholarship, INO verification, transfer, class edit ya bank se related sawal poochhein. Main madad karunga.";
+}
+</script>
+</script>
+
+</body>
+</html>
