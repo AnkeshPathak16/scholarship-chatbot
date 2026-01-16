@@ -109,6 +109,26 @@ function getBotReply(text) {
     return "INO login ke liye e-Kalyan portal → General Services → INO Login par jaakar User Type: School select karein. Password bhoolne par Password Reset option ka use karein.";
   }
 
+// STUDENT REGISTRATION
+if (
+  text.includes("student registration") ||
+  text.includes("new registration") ||
+  text.includes("apply") ||
+  text.includes("pre matric")
+) {
+  return "Student Registration ka use naye students ko eKalyan portal par register karne ke liye hota hai. Isme student ko district, block, school select karke personal details, Aadhaar aur bank details fill karni hoti hain.";
+}
+
+// PRE-MATRIC SCHOLARSHIP AMOUNT
+if (
+  text.includes("scholarship amount") ||
+  text.includes("amount") ||
+  text.includes("pre matric amount") ||
+  text.includes("kitna paisa")
+) {
+  return "Pre-Matric Scholarship amount class par depend karta hai. Class 1–5 ke liye 1500 aur Class 6–8 ke liye 2500 amount aur Class 9-10 ke liye 4500 amount milta hai. Final amount government norms ke according hota hai aur directly bank account me aata hai.";
+}
+
   // GENERAL SERVICES
   if (
     text.includes("general") ||
@@ -201,3 +221,4 @@ function getBotReply(text) {
 
 </body>
 </html>
+
